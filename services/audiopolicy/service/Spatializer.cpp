@@ -690,7 +690,7 @@ Status Spatializer::setFoldState(bool folded) {
     if (mEngine != nullptr) {
         // we don't suppress multiple calls with the same folded state - that's
         // done at the caller.
-        setEffectParameter_l(SPATIALIZER_PARAM_FOLD_STATE, std::vector<uint8_t>{mFoldedState});
+        setEffectParameter_l(SPATIALIZER_PARAM_HEAD_TO_STAGE, std::vector<uint8_t>{mFoldedState});
     }
     return Status::ok();
 }
@@ -897,7 +897,7 @@ status_t Spatializer::attachOutput(audio_io_handle_t output, size_t numActiveTra
         // Restore common effect state.
         setEffectParameter_l(SPATIALIZER_PARAM_DISPLAY_ORIENTATION,
                 std::vector<float>{mDisplayOrientation});
-        setEffectParameter_l(SPATIALIZER_PARAM_FOLD_STATE,
+        setEffectParameter_l(SPATIALIZER_PARAM_HEAD_TO_STAGE,
                 std::vector<uint8_t>{mFoldedState});
         setEffectParameter_l(SPATIALIZER_PARAM_HINGE_ANGLE,
                 std::vector<float>{mHingeAngle});
